@@ -1,0 +1,9 @@
+1. Implement functions that takes arrays as parameter and does the following activities on the original parent array.
+a) Bubble Sort
+b) Insertion Sort
+c) Quick Sort
+d) Heap Sort
+e) Selection Sort
+For all above cases, return type is Unit.
+
+2. Create a notebook which demonstrates operators.
