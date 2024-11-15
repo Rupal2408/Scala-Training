@@ -1,0 +1,7 @@
+[0m[[0m[33mwarn[0m] [0m[0m/Users/RupalGupta/Scala-Training/Day8/KafkaProducer/src/main/scala/KafkaActors.scala:69:16: Implicit definition should have explicit type (inferred akka.actor.ActorSystem) [quickfixable][0m
+[0m[[0m[33mwarn[0m] [0m[0m  implicit val actorsystem = ActorSystem("KafkaProducerSystem")[0m
+[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0m/Users/RupalGupta/Scala-Training/Day8/KafkaProducer/src/main/scala/Main.scala:10:16: Implicit definition should have explicit type (inferred akka.actor.typed.ActorSystem[Any]) [quickfixable][0m
+[0m[[0m[33mwarn[0m] [0m[0m  implicit val actorSystem = ActorSystem(Behaviors.empty, "MyActorSystem")[0m
+[0m[[0m[33mwarn[0m] [0m[0m               ^[0m
+[0m[[0m[33mwarn[0m] [0m[0mtwo warnings found[0m
