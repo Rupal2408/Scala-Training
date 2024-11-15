@@ -1,0 +1,32 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/RupalGupta/Scala-Training/Week3-MiniProject/EventManagement/KafkaConsumer/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = /Users/RupalGupta/Scala-Training/Week3-MiniProject/EventManagement/KafkaConsumer/target/scala-2.13/classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EventManagementListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	JsonFormats$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DecorationMessageListener$$anonfun$receive$4.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaMessageFormat$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	MessageTopics.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CateringMessageListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LogisticsMessageListener$$anonfun$receive$5.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	LogisticsMessageListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ManagerMessageListener$$anonfun$receive$6.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EventManagementFileWriterActor$$anonfun$receive$1.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EntertainmentMessageListener$$anonfun$receive$3.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	JsonFormats.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	DecorationMessageListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	CateringMessageListener$$anonfun$receive$2.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaConsumer.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EntertainmentMessageListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ManagerMessageListener.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaMessageFormat.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	MessageTopics$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EventManagementListener$$anonfun$receive$7.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EventManagementFileWriterActor.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	KafkaConsumer$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EventManagementMsgReceivers$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	EventManagementMsgReceivers.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: /Users/RupalGupta/Scala-Training/Week3-MiniProject/EventManagement/KafkaConsumer/target/scala-2.13/classes.bak[0m
