@@ -7,12 +7,15 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.13.14"
 
 libraryDependencies += guice
+libraryDependencies += ws
+
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.0" % Test
 
 libraryDependencies ++= Seq(
   "org.playframework" %% "play-slick"            % "6.1.0",    // Enables to work with database
   "org.playframework" %% "play-slick-evolutions" % "6.1.0",    // Support for database migrations, similar to Flyway
-  "mysql" % "mysql-connector-java" % "8.0.26"
+  "mysql" % "mysql-connector-java" % "8.0.26",
+  "org.slf4j" % "slf4j-api" % "1.7.30"
 )
 
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.9.2"

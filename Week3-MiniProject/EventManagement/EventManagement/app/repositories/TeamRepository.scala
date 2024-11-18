@@ -1,10 +1,12 @@
 package repositories
 
 import models.entity.Team
-
+import models.enums.TeamType.TeamType
+import ColumnMappings._
 import javax.inject.{Inject, Singleton}
 import play.api.db.slick.DatabaseConfigProvider
 import slick.jdbc.JdbcProfile
+
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
@@ -15,10 +17,9 @@ class TeamRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
   import profile.api._
 
   private class TeamsTable(tag: Tag) extends Table[Team](tag, "teams")  {
-
     def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def teamName = column[String]("team_name")
-    def teamType = column[String]("team_type")
+    def teamType = column[TeamType]("team_type")
 
     def * = (id.?, teamName, teamType) <> ((Team.apply _).tupled, Team.unapply)
   }
@@ -35,7 +36,7 @@ class TeamRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
     db.run(teams.filter(_.id === teamId).result.head)
   }
 
-  def listTeams(teamType: Option[String]): Future[Seq[Team]] = {
+  def listTeams(teamType: Option[TeamType]): Future[Seq[Team]] = {
     val query = teams
       .filterOpt(teamType) { case (team, s) => team.teamType === s }
 

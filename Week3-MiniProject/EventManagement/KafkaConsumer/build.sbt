@@ -4,7 +4,7 @@ ThisBuild / scalaVersion := "2.13.13"
 
 lazy val root = (project in file("."))
   .settings(
-    name := "kafka-consumer-person"
+    name := "KafkaConsumer"
   )
 
 resolvers += "Akka library repository".at("https://repo.akka.io/maven")

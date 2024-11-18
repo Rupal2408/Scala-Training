@@ -1,10 +1,11 @@
 package controllers
 
 import models.entity.Team
+import models.enums.TeamType
+import models.response.ApiResponse
 import play.api.mvc._
 import play.api.libs.json._
 import services.TeamService
-
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -19,23 +20,25 @@ class TeamController @Inject()(
     request.body.validate[Team] match {
       case JsSuccess(team, _) =>
         teamService.create(team).map(created =>
-          Created(Json.toJson(created)))
+          ApiResponse.successResult(201, Json.obj("message"->"Team created", "id"-> created)))
       case JsError(errors) =>
-        Future.successful(BadRequest(Json.obj(
-          "message" -> "Invalid Team data",
-          "errors" -> JsError.toJson(errors))))
+        Future.successful(ApiResponse.errorResult(
+          "Invalid team request data",
+          400
+        ))
     }
   }
 
   // Get Team Details
   def getTeamDetails(teamId: Long): Action[AnyContent] = Action.async {
     teamService.getTeamDetailsById(teamId).map(created =>
-      Ok(Json.toJson(created)))
+      ApiResponse.successResult(200, Json.toJson(created)))
   }
 
   // List Teams
   def listTeams(teamType: Option[String]): Action[AnyContent] = Action.async {
-    teamService.listTeams(teamType).map(created =>
-      Ok(Json.toJson(created)))
+    val teamTypeEnum = TeamType.withNameOption(teamType)
+    teamService.listTeams(teamTypeEnum).map(created =>
+      ApiResponse.successResult(200, Json.toJson(created)))
   }
 }

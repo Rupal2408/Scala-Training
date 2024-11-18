@@ -1,0 +1,1 @@
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertainment assign, deadline: 2024-11-20 17:00:00 and specialInstructions: Keep high base

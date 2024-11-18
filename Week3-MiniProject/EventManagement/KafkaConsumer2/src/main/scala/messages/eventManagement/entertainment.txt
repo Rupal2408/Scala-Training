@@ -1,0 +1,1 @@
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: BirthDay Decorations, deadline: 2024-11-27 00:00:00 and specialInstructions: There should be a Photo-Booth
