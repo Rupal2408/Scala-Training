@@ -1,6 +1,6 @@
 package scheduler
 
-import models.{GuestDao, MenuDAO}
+import models.{GuestDao}
 import utils.MailUtil.composeAndSendEmailAllGuests
 
 import java.util.concurrent.TimeUnit
@@ -9,11 +9,9 @@ import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, ExecutionContext}
 
 @Singleton
-class GuestService @Inject()(guestRepository: GuestDao, menuDao: MenuDAO)(implicit ec: ExecutionContext) {
+class GuestService @Inject()(guestRepository: GuestDao)(implicit ec: ExecutionContext) {
 
   def fetchGuestListAndSendMenu(): Unit = {
-    val menuList = Await.result(menuDao.list(), Duration.apply(3, TimeUnit.SECONDS))
-    guestRepository.findActiveGuests().map(composeAndSendEmailAllGuests(_, menuList))
-
+    guestRepository.findActiveGuests().map(composeAndSendEmailAllGuests(_))
   }
 }

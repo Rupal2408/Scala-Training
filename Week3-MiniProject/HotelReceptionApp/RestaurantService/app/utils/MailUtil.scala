@@ -1,6 +1,6 @@
 package utils
 
-import models.{Email, Guest, GuestInfo, Menu}
+import models.{Email, Guest, GuestInfo}
 
 import java.util.Properties
 import javax.mail.internet.{InternetAddress, MimeMessage}
@@ -17,12 +17,8 @@ object MailUtil {
       new PasswordAuthentication("rupal.gupta240897@gmail.com", "yjlx kmqz asah nzdp")
   })
 
-  def composeMail(guest: GuestInfo, menuList: Seq[Menu]): Email = {
-    val listItems = menuList.map { menu =>
-      s"<li>Item Name: ${menu.foodItem}, Category: ${menu.foodType}, Price: ${menu.price}</li>"
-    }.mkString("\n") // Join all list items with new lines
+  def composeMail(guest: GuestInfo): Email = {
 
-    // Wrap the list items in a <ul> tag to create the full HTML content
     val content: String = s"""
                              |<html>
                              |<head>
@@ -81,7 +77,11 @@ object MailUtil {
                              |
                              |  <h2>Please check out our restaurant's menu for today:</h2>
                              |  <ul>
-                             |    $listItems
+                             |    <li>1. Pizza - 250</li>
+                             |    <li>2. Pasta - 300</li>
+                             |    <li>3. Sandwich - 350</li>
+                             |    <li>4. Tomato Soup - 200</li>
+                             |    <li>5. Mushroom Soup - 400</li>
                              |  </ul>
                              |
                              |  <p>Best Regards,</p>
@@ -93,13 +93,13 @@ object MailUtil {
     Email(guest.email, "Restaurant Menu", content)
   }
 
-  def composeAndSendEmail(guestInfo :GuestInfo, menu: Seq[Menu]): Unit = {
-    val mailContent = composeMail(guestInfo, menu)
+  def composeAndSendEmail(guestInfo :GuestInfo): Unit = {
+    val mailContent = composeMail(guestInfo)
     sendEmail(mailContent)
   }
 
-  def composeAndSendEmailAllGuests(guestList: Seq[Guest], menu: Seq[Menu]): Unit = {
-    guestList.foreach(guest => (GuestInfo(guest.name, guest.email), menu))
+  def composeAndSendEmailAllGuests(guestList: Seq[Guest]): Unit = {
+    guestList.foreach(guest => (GuestInfo(guest.name, guest.email)))
   }
 
   private def sendEmail(email: Email): Unit = {

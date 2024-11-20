@@ -1,6 +1,6 @@
 package consumer
 
-import models.{Guest, GuestInfo, Menu, MenuDAO}
+import models.{Guest, GuestInfo}
 import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.apache.pekko.Done
@@ -19,7 +19,7 @@ import scala.jdk.CollectionConverters._
 import scala.util.{Failure, Success}
 
 @Singleton
-class RestaurantKafkaConsumer @Inject()(menuDAO: MenuDAO, coordinatedShutdown: CoordinatedShutdown) extends Logging {
+class RestaurantKafkaConsumer @Inject()( coordinatedShutdown: CoordinatedShutdown) extends Logging {
 
   logger.info("Starting RestaurantKafkaConsumer")
   implicit val GuestFormat: Format[Guest] = Json.format[Guest]
@@ -39,8 +39,7 @@ class RestaurantKafkaConsumer @Inject()(menuDAO: MenuDAO, coordinatedShutdown: C
     while(!stopConsumer.get()) {
       kafkaConsumer.poll(Duration.ofSeconds(3)).asScala.foreach(r => {
         logger.info(s"RestaurantKafkaConsumer receive record $r")
-        val sendMenuToMail = composeAndSendEmail(Json.parse(r.value()).as[GuestInfo], _: Seq[Menu])
-        menuDAO.list().map(sendMenuToMail)(mailExecutionContext)
+        val sendMenuToMail = composeAndSendEmail(Json.parse(r.value()).as[GuestInfo])
       })
     }
     logger.info(s"SampleKafkaConsumer quits 'while(true)' loop.")
