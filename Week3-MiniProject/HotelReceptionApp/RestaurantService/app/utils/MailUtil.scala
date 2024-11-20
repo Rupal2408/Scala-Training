@@ -12,7 +12,6 @@ object MailUtil {
   properties.put("mail.smtp.port", "587")
   properties.put("mail.smtp.auth", "true")
   properties.put("mail.smtp.starttls.enable", "true")
-
   val session = Session.getInstance(properties, new Authenticator() {
     override protected def getPasswordAuthentication =
       new PasswordAuthentication("rupal.gupta240897@gmail.com", "yjlx kmqz asah nzdp")
@@ -27,36 +26,71 @@ object MailUtil {
     val content: String = s"""
                              |<html>
                              |<head>
-                             |  <title>Today's Menu</title>
+                             |  <title>Restaurant Menu</title>
                              |  <style>
                              |    body {
-                             |      font-family: Arial, sans-serif;
+                             |      font-family: 'Arial', sans-serif;
+                             |      background-color: #f9f9f9;
+                             |      color: #333;
+                             |      margin: 0;
+                             |      padding: 0;
                              |    }
+                             |
+                             |    h2 {
+                             |      color: #2c3e50;
+                             |      text-align: center;
+                             |      font-size: 24px;
+                             |      margin-top: 20px;
+                             |    }
+                             |
+                             |    p {
+                             |      text-align: center;
+                             |      font-size: 18px;
+                             |      color: #7f8c8d;
+                             |    }
+                             |
                              |    ul {
                              |      list-style-type: none;
                              |      padding: 0;
+                             |      max-width: 600px;
+                             |      margin: 20px auto;
                              |    }
+                             |
                              |    li {
-                             |      background-color: #f4f4f4;
-                             |      margin: 5px 0;
-                             |      padding: 10px;
-                             |      border-radius: 4px;
+                             |      background-color: #ffffff;
+                             |      margin: 10px 0;
+                             |      padding: 15px;
+                             |      border-radius: 8px;
+                             |      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                             |      transition: background-color 0.3s, transform 0.2s;
+                             |    }
+                             |
+                             |    li:hover {
+                             |      background-color: #ecf0f1;
+                             |      transform: scale(1.02);
+                             |    }
+                             |
+                             |    li span {
+                             |      font-weight: bold;
+                             |      color: #3498db;
                              |    }
                              |  </style>
                              |</head>
                              |<body>
-                             |  <h2>Very good morning ${guest.name}</h2>
+                             |  <h2>Hello ${guest.name}</h2>
                              |
-                             |  <h2>Please check today's menu at out in-house restaurant</h2>
+                             |  <h2>Please check out our restaurant's menu for today:</h2>
                              |  <ul>
                              |    $listItems
                              |  </ul>
-                             |  <p>Regards</p>
-                             |  <p>Team Originals</p>
+                             |
+                             |  <p>Best Regards,</p>
+                             |  <p>Hotel Grand</p>
                              |</body>
                              |</html>
+                             |
     """.stripMargin
-    Email(guest.email, "Today's Menu", content)
+    Email(guest.email, "Restaurant Menu", content)
   }
 
   def composeAndSendEmail(guestInfo :GuestInfo, menu: Seq[Menu]): Unit = {

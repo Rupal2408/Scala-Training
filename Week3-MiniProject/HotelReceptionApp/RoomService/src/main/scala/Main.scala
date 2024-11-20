@@ -12,9 +12,10 @@ import spray.json._
 
 object Main {
   private def composeMail(guestInfo: GuestInfo): Email = {
-    val body: String = s"Welcome ${guestInfo.name},\n\n It gives us great pleasure to welcome you onboard. We would also like to thank you for choosing us for enhancing your experience." +
-      s"Please dial +91-XXXXXXXXX to call the reception any room service, +91-YYYYYYYYY for ordering food." +
-      s"Please reach out to +91-ZZZZZZZZ in case of any emergency.\n\nWishing for a healthy and pleasant stay.\n\nHotel Originals"
+    val body: String = s"Thank you for choosing to stay with us at Hotel Grand, RupalWork.\n\nWe look forward to making your" +
+      s" stay a comfortable and memorable one! For your convenience, please find below some important contact details:" +
+      s"\n\nEmergency Numbers: \n\nFront Desk: +91 XXXXXXXXXX\n\nRestaraunt Food Order: +91 XXXXXXXXXX\n\nFor any Emergency:" +
+      s" +91 XXXXXXXXXX"
     Email(guestInfo.email, "Welcome Onboard!!!", body)
   }
 

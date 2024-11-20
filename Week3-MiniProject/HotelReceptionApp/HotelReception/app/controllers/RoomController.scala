@@ -4,7 +4,6 @@ import jobs.RoomStatusUpdateTask
 
 import javax.inject._
 import play.api.mvc._
-import jobs.RoomStatusUpdateTask
 import repositories.{BookingDetailsRepository, GuestRepository, RoomRepository}
 import services.KafkaProducerService
 import scala.concurrent.{ExecutionContext, Future}

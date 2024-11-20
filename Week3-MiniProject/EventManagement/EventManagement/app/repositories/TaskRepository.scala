@@ -32,12 +32,6 @@ class TaskRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
   private val tasks = TableQuery[TaskTable]
 
-  def create(task: Task): Future[Long] = {
-    val insertQueryThenReturnId = tasks returning tasks.map(_.id)
-
-    db.run(insertQueryThenReturnId += task)
-  }
-
   def getTaskById(taskId: Long): Future[Task] = {
     db.run(tasks.filter(_.id === taskId).result.head)
   }

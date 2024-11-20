@@ -56,7 +56,7 @@ class EventController @Inject()(
   }
 
   // Get the list of events
-  def listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String], slotNumber: Option[Int])
+  def listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String])
   : Action[AnyContent] = Action.async {
     val parsedDate: Option[LocalDate] = eventDate.flatMap { date =>
       try {
@@ -66,7 +66,7 @@ class EventController @Inject()(
       }
     }
     val statusEnum = EventStatus.withNameOption(status)
-    eventService.list(eventType, statusEnum, parsedDate, slotNumber).map(response =>
+    eventService.list(eventType, statusEnum, parsedDate).map(response =>
       ApiResponse.successResult(200, Json.toJson(response))
     )
   }

@@ -26,12 +26,6 @@ class TeamRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
   private val teams = TableQuery[TeamsTable]
 
-  def create(team: Team): Future[Long] = {
-    val insertQueryThenReturnId = teams returning teams.map(_.id)
-
-    db.run(insertQueryThenReturnId += team)
-  }
-
   def getTeamDetailsById(teamId: Long): Future[Team] = {
     db.run(teams.filter(_.id === teamId).result.head)
   }

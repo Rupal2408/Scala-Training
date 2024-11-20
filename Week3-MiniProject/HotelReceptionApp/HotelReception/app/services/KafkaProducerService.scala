@@ -1,5 +1,3 @@
-// app/services/KafkaProducerService.scala
-
 package services
 
 import javax.inject.{Inject, Singleton}
@@ -37,7 +35,7 @@ class KafkaProducerService @Inject()(config: Configuration)(implicit ec: Executi
    * @return Future indicating the success or failure of the send operation.
    */
   def sendGuestBookingMessage(guestName: String, guestEmail: String): Future[RecordMetadata] = {
-    val message = s"""{"guestName": "$guestName", "guestEmail": "$guestEmail"}"""
+    val message = s"""{"name": "$guestName", "email": "$guestEmail"}"""
     val record = new ProducerRecord[String, String](topic, guestEmail, message) // Using guestEmail as the key
 
     val promise = Promise[RecordMetadata]()

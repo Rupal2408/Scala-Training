@@ -52,7 +52,6 @@ class KafkaProducerFactory @Inject()() {
         messageType = "TASK_ALLOCATION",
         message = message
       )
-
       producer.send(record)
     }
   }
@@ -96,35 +95,5 @@ class KafkaProducerFactory @Inject()() {
     )
 
     producer.send(managerRecord)
-  }
-
-  def sendPeriodicUpdate(event: Event, task: Task, timeDescription: Int): Unit = {
-    val record = createKafkaMessage(
-      receiver = determineReceiver(task.teamId),
-      messageType = "PREPARATION_UPDATE",
-      message = s"Complete your task: ${task.id} for event: #${event.id}, remaining: $timeDescription hours"
-    )
-
-    producer.send(record)
-  }
-
-  def queueNotifications(task: Task, time: Int): Unit = {
-    val record = createKafkaMessage(
-      receiver = determineReceiver(task.teamId),
-      messageType = "PREPARATION_UPDATE",
-      message = s"Complete your task: #${task.id}, remaining: $time hours"
-    )
-
-    producer.send(record)
-  }
-
-  def sendDemo(): Unit = {
-    val record = createKafkaMessage(
-      receiver = MessageTeam.MANAGER,
-      messageType = "SEND_DEMO",
-      message = "message"
-    )
-
-    producer.send(record)
   }
 }

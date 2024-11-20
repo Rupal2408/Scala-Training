@@ -26,7 +26,7 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
     def specialRequirements = column[Option[String]]("special_requirements")
     def eventStatus = column[Option[EventStatus]]("event_status")
 
-    def * = (id.?, eventType, eventName, eventDate, slotNumber, guestCount, specialRequirements, eventStatus) <> ((Event.apply _).tupled, Event.unapply)
+    def * = (id.?, eventType, eventName, eventDate, guestCount, specialRequirements, eventStatus) <> ((Event.apply _).tupled, Event.unapply)
   }
 
   private val events = TableQuery[EventTable]
@@ -43,26 +43,20 @@ class EventRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
 
   def update(eventId: Long, event: Event): Future[Event] = {
     val updateQuery = events.filter(_.id === eventId)
-      .map(ele => (ele.eventType, ele.eventName, ele.eventDate, ele.slotNumber, ele.guestCount, ele.specialRequirements, ele.eventStatus))
-      .update((event.eventType, event.eventName, event.eventDate, event.slotNumber, event.guestCount, event.specialRequirements, event.eventStatus))
+      .map(ele => (ele.eventType, ele.eventName, ele.eventDate, ele.guestCount, ele.specialRequirements, ele.eventStatus))
+      .update((event.eventType, event.eventName, event.eventDate, event.guestCount, event.specialRequirements, event.eventStatus))
 
     db.run(updateQuery).flatMap { _ =>
       getEventById(eventId)
     }
   }
 
-  def listEvents(eventType: Option[String], status: Option[EventStatus], eventDate: Option[LocalDate], slotNumber: Option[Int]): Future[Seq[Event]] = {
+  def listEvents(eventType: Option[String], status: Option[EventStatus], eventDate: Option[LocalDate]): Future[Seq[Event]] = {
     val query = events
       .filterOpt(status) { case (event, s) => event.eventStatus === s }
       .filterOpt(eventType) { case (event, s) => event.eventType === s }
       .filterOpt(eventDate) { case (event, s) => event.eventDate === s }
-      .filterOpt(slotNumber) { case (event, s) => event.slotNumber === s }
-
     db.run(query.result)
-  }
-
-  def checkEventExists(date: LocalDate, slot: Int): Future[Boolean] = {
-    db.run(events.filter(event => event.eventDate === date && event.slotNumber === slot).exists.result)
   }
 
   def getEventsByDate(date: LocalDate): Future[Seq[Event]] = {

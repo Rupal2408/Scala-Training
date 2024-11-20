@@ -1,8 +1,8 @@
 package modules
 
 import play.api.inject._
-import services.StartupTasks
+import services.Scheduler
 
 class Module extends SimpleModule(
-  bind[StartupTasks].toSelf.eagerly()
+  bind[Scheduler].toSelf.eagerly()
 )

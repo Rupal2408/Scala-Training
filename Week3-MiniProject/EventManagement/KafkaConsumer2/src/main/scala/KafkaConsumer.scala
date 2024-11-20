@@ -107,7 +107,6 @@ object KafkaConsumer {
     val logisticsMessageListener: ActorRef = system.actorOf(Props(new LogisticsMessageListener(emFileWriterActor)), "LogisticsMessageListener")
     val managerMessageListener: ActorRef = system.actorOf(Props(new ManagerMessageListener(emFileWriterActor)), "ManagerMessageListener")
 
-    // Create the actor for project: event-management
     val eventManagementListener: ActorRef = system.actorOf(Props(new EventManagementListener(
       cateringMessageListener, entertainmentMessageListener, decorationsMessageListener, logisticsMessageListener, managerMessageListener
     )), "EventManagementListener")

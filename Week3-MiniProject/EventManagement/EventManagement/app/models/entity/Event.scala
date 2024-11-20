@@ -10,7 +10,6 @@ case class Event(
                   eventType: String,
                   eventName: String,
                   eventDate: LocalDate,
-                  slotNumber: Int,
                   guestCount: Long,
                   specialRequirements: Option[String] = None,
                   eventStatus: Option[EventStatus] = None
@@ -21,7 +20,6 @@ object Event {
   private val eventTypeReads: Reads[String] = (JsPath \ "eventType").read[String]
   private val eventNameReads: Reads[String] = (JsPath \ "eventName").read[String]
   private val eventDateReads: Reads[LocalDate] = (JsPath \ "eventDate").read[LocalDate]
-  private val slotNumberReads: Reads[Int] = (JsPath \ "slotNumber").read[Int]
   private val guestCountReads: Reads[Long] = (JsPath \ "guestCount").read[Long]
   private val specialRequirementsReads: Reads[Option[String]] = (JsPath \ "specialRequirements").readNullable[String]
   private val eventStatusReads: Reads[Option[EventStatus]] =
@@ -33,7 +31,6 @@ object Event {
       eventTypeReads and
       eventNameReads and
       eventDateReads and
-      slotNumberReads and
       guestCountReads and
       specialRequirementsReads and
       eventStatusReads

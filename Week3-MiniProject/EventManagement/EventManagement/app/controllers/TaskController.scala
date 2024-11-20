@@ -16,20 +16,6 @@ class TaskController @Inject()(
                                 taskService: TaskService
                               )(implicit ec: ExecutionContext) extends AbstractController(cc) {
 
-  // Create a task
-  def createTask(): Action[JsValue] = Action.async(parse.json) { request =>
-    request.body.validate[Task] match {
-      case JsSuccess(task, _) =>
-        taskService.create(task).map(created =>
-          ApiResponse.successResult(201, Json.obj("message"->"Task created", "id"-> created)))
-      case JsError(errors) =>
-        Future.successful(ApiResponse.errorResult(
-          "Invalid task request data",
-          400
-        ))
-    }
-  }
-
   // Get task details
   def getTaskById(taskId: Long): Action[AnyContent] = Action.async {
     taskService.getTaskById(taskId).map(created =>

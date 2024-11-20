@@ -1,1 +1,4 @@
 TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Logistics assign, deadline: 2024-11-20 17:00:00 and specialInstructions: keep bill ready
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Logistics assign, deadline: 2024-11-20 17:00:00 and specialInstructions: keep bill ready
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Logistics assign, deadline: 2024-11-20 17:00:00 and specialInstructions: keep bill ready
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Logistics, deadline: 2024-11-20 17:00:00 and specialInstructions: Bill ready

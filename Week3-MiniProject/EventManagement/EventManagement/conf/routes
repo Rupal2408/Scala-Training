@@ -16,13 +16,11 @@ GET     /event/:eventId             controllers.EventController.getEventById(eve
 PUT     /event/:eventId             controllers.EventController.updateEvent(eventId: Long)
 
 # Get the list of events with filters
-GET     /events                     controllers.EventController.listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String], slotNumber: Option[Int])
+GET     /events                     controllers.EventController.listEvents(eventType: Option[String], status: Option[String], eventDate: Option[String])
 
 # Get the tasks for an eventId
 GET     /events/:eventId/tasks      controllers.EventController.getTasksForEventId(eventId: Long)
 
-# Create a task
-POST    /task                      controllers.TaskController.createTask()
 
 # Get details of a task by taskId
 GET     /task/:taskId              controllers.TaskController.getTaskById(taskId: Long)
@@ -32,9 +30,6 @@ PUT     /task/:taskId              controllers.TaskController.updateTaskStatus(t
 
 # Assign tasks for an event
 POST    /task/assign               controllers.TaskController.assignTasks()
-
-# Create a team
-POST    /team                      controllers.TeamController.registerTeam()
 
 # Get the team details by teamId
 GET     /team/:teamId              controllers.TeamController.getTeamDetails(teamId: Long)

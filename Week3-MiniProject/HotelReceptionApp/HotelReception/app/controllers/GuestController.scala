@@ -16,12 +16,11 @@ class GuestController @Inject()(
 
   def getActiveGuests: Action[AnyContent] = Action.async {
     guestRepository.getActiveGuests.map { guests =>
-      // Filter only the required fields (name and email) and convert to JSON
       val guestInfo = guests.map(guest => Json.obj("name" -> guest.name, "email" -> guest.email))
       Ok(Json.obj("activeGuests" -> guestInfo))
     } recover {
       case ex: Exception =>
-        logger.error("Error retrieving active guests", ex)
+        logger.error("Error in fetching active guests", ex)
         InternalServerError(Json.obj("message" -> "Failed to retrieve active guests"))
     }
   }

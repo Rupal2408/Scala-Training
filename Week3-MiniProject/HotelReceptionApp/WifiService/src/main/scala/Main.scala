@@ -12,8 +12,8 @@ import spray.json._
 
 object Main {
   private def compose(guestInfo: GuestInfo): Email = {
-    val body: String = s"Welcome ${guestInfo.name},\n\n Please find the Wifi credentials here.\nname: Originals 5G\npassword: SNS110067\n\nHotel Originals"
-    Email(guestInfo.email, "Wifi Credentials!!!", body)
+    val body: String = s"Welcome to Hotel Grand, ${guestInfo.name},\n\n Please find the Wifi credentials here.\nname:  HtGrand224\npassword: DFG123@333\n\nBest Regars, \n\n Hotel Grand"
+    Email(guestInfo.email, "Wifi Details", body)
   }
   def main(args: Array[String]): Unit = {
     implicit val system: ActorSystem[_] = ActorSystem(Behaviors.empty, "HotelRoomServiceNotification")
