@@ -6,9 +6,9 @@ import javax.inject.Inject
 
 class AuthController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
   def login: Action[JsValue] = Action(parse.json) { request =>
-    val username = (request.body \ "rupalg").as[String]
-    val password = (request.body \ "********").as[String]
-    if (username == "admin" && password == "password") {
+    val username = (request.body \ "username").as[String]
+    val password = (request.body \ "password").as[String]
+    if (username == "rupalg" && password == "********") {
       val token = JwtUtil.generateToken(username)
       Ok(Json.obj("token" -> token))
     } else {
