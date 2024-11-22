@@ -2,3 +2,10 @@ ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reported
 ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
 ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
 ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth
+ISSUE_ALERT :: Technical in #20 taskId for eventId: #11 from teamId #2, reportedAt: 2024-11-28T00:00:00 with description: Budget issue with Photo-Booth

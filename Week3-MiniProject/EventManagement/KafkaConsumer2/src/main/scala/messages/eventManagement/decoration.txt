@@ -2,3 +2,10 @@ TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertai
 TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertainment assign, deadline: 2024-11-20 17:00:00 and specialInstructions: Keep high base
 TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertainment assign, deadline: 2024-11-20 17:00:00 and specialInstructions: Keep high base
 TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Entertainment , deadline: 2024-11-20 17:00:00 and specialInstructions: Music should be there
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertainment assign, deadline: 2024-11-20 17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Entertainment , deadline: 2024-11-20 17:00:00 and specialInstructions: Music should be there
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertainment assign, deadline: 2024-11-20 17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Entertainment , deadline: 2024-11-20 17:00:00 and specialInstructions: Music should be there
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Entertainment assign, deadline: 2024-11-20 17:00:00 and specialInstructions: Keep high base
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Entertainment , deadline: 2024-11-20 17:00:00 and specialInstructions: Music should be there
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Entertainment , deadline: 2024-11-20 17:00:00 and specialInstructions: Music should be there

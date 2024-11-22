@@ -6,9 +6,7 @@ import models.enums.TaskStatus.TaskStatus
 import models.request.AssignTasksRequest
 import repositories.TaskRepository
 
-import java.time.format.DateTimeFormatter
-import java.time.{Duration, LocalDateTime}
-import java.util.concurrent.{Executors, ScheduledExecutorService, TimeUnit}
+import java.time.LocalDateTime
 import javax.inject.{Inject, Singleton}
 import scala.concurrent.{ExecutionContext, Future}
 

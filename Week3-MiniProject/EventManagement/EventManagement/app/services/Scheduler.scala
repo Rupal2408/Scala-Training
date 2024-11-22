@@ -10,12 +10,10 @@ class Scheduler @Inject()(eventRepository: EventRepository,
                           kafkaProducerFactory: KafkaProducerFactory,
                           taskRepository: TaskRepository)(implicit ec: ExecutionContext) {
 
-  // Initial time after the application startup when this runs
   private val scheduler: ScheduledExecutorService = Executors.newScheduledThreadPool(1)
   startDailyOverdueCheck()
 
   private def startDailyOverdueCheck(): Unit = {
-    // Schedule the task to run daily at the specified time
     scheduler.scheduleAtFixedRate(
       new Runnable {
         override def run(): Unit = {
@@ -23,7 +21,7 @@ class Scheduler @Inject()(eventRepository: EventRepository,
         }
       },
       0L,
-      TimeUnit.DAYS.toSeconds(1), // Repeat every 24 hours
+      TimeUnit.DAYS.toSeconds(1),
       TimeUnit.SECONDS
     )
   }

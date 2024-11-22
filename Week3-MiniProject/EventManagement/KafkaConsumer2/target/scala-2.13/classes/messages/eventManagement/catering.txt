@@ -1,2 +1,8 @@
 TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Food Preparation, deadline: 2024-11-27 00:00:00
 TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Food Preparation, deadline: 2024-11-27 00:00:00
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Food Preparation, deadline: 2024-11-27 00:00:00
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Food Preparation, deadline: 2024-11-27 00:00:00
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Food Preparation, deadline: 2024-11-27 00:00:00
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Food Preparation, deadline: 2024-11-27 00:00:00
+TASK_ALLOCATION :: Task is allocated for eventId: #12 with description: Food Preparation, deadline: 2024-11-27 00:00:00
+TASK_ALLOCATION :: Task is allocated for eventId: #13 with description: Food Preparation, deadline: 2024-11-27 00:00:00

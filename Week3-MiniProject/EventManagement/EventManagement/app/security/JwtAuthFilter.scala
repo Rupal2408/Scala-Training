@@ -1,8 +1,9 @@
 package security
+
 import org.apache.pekko.stream.Materializer
 import play.api.http.HttpFilters
 import play.api.mvc._
-import play.api.libs.typedmap.TypedKey
+
 import javax.inject.Inject
 import scala.concurrent.{ExecutionContext, Future}
 

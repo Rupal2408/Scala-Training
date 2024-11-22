@@ -4,6 +4,8 @@
 # ~~~~
 
 # An example controller showing a sample home page
+OPTIONS   /*path   controllers.Application.preflight(path: String)
+
 GET     /                           controllers.HomeController.index()
 
 # Create an event
@@ -42,3 +44,5 @@ POST    /issue                      controllers.IssueController.create()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+POST    /api/login                controllers.AuthController.login

@@ -21,6 +21,10 @@ libraryDependencies ++= Seq(
 libraryDependencies += "com.typesafe.play" %% "play-json" % "2.9.2"
 libraryDependencies += "org.apache.kafka" % "kafka-clients" % "3.4.0" // Add the correct version of Kafka client
 
+libraryDependencies ++= Seq(
+  "com.auth0" % "java-jwt" % "4.3.0", // Java JWT library
+)
+libraryDependencies += filters
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.example.controllers._"

@@ -9,7 +9,6 @@ object EventStatus extends Enumeration {
   val REJECTED: Value = Value("REJECTED")
   val CANCELLED: Value = Value("CANCELLED")
 
-  // Implicit Format for EventStatus enum
   implicit val eventTypeFormat: Format[EventStatus] = new Format[EventStatus] {
     def reads(json: JsValue): JsResult[EventStatus] = json.validate[String].map(EventStatus.withName)
     def writes(status: EventStatus): JsValue = JsString(status.toString)

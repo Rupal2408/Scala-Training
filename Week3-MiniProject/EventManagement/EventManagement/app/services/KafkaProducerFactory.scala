@@ -3,8 +3,11 @@ package services
 import models.entity.{Event, Issue, Task}
 import models.request.KafkaMessageFormat
 import play.api.libs.json._
+
 import javax.inject._
 import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
+import play.api.Configuration
+
 import java.util.Properties
 
 object MessageTeam {
@@ -16,9 +19,10 @@ object MessageTeam {
 }
 
 @Singleton
-class KafkaProducerFactory @Inject()() {
+class KafkaProducerFactory @Inject()(config: Configuration)() {
   private val props = new Properties() { props =>
-    props.put("bootstrap.servers", "localhost:9092")
+    private val bootstrapServers = sys.env.getOrElse("BROKER_HOST", config.get[String]("kafka.bootstrap.servers"))
+    props.put("bootstrap.servers", bootstrapServers)
     props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
     props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   }

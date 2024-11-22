@@ -10,7 +10,6 @@ object TeamType extends Enumeration {
   val DECORATIONS: Value = Value("DECORATIONS")
   val LOGISTICS: Value = Value("LOGISTICS")
 
-  // Implicit Format for TeamType enum
   implicit val teamTypeFormat: Format[TeamType] = new Format[TeamType] {
     def reads(json: JsValue): JsResult[TeamType] = json.validate[String].map(TeamType.withName)
     def writes(status: TeamType): JsValue = JsString(status.toString)
