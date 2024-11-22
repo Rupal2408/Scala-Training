@@ -24,4 +24,10 @@ libraryDependencies ++= Seq(
   "org.apache.kafka" % "kafka-clients" % "3.0.0"
 )
 
+libraryDependencies ++= Seq(
+  "com.auth0" % "java-jwt" % "4.3.0", // Java JWT library
+)
+libraryDependencies += filters
+
+
 

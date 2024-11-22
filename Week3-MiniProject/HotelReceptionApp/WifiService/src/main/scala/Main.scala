@@ -12,7 +12,7 @@ import spray.json._
 
 object Main {
   private def compose(guestInfo: GuestInfo): Email = {
-    val body: String = s"Welcome to Hotel Grand, ${guestInfo.name},\n\n Please find the Wifi credentials here.\nname:  HtGrand224\npassword: DFG123@333\n\nBest Regars, \n\n Hotel Grand"
+    val body: String = s"Welcome to Hotel Grand, ${guestInfo.name},\n\nPlease find the Wifi credentials here.\nname:  HtGrand224\npassword: DFG123@333\n\nBest Regards,\nHotel Grand"
     Email(guestInfo.email, "Wifi Details", body)
   }
   def main(args: Array[String]): Unit = {

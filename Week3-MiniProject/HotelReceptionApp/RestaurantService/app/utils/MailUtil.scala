@@ -14,7 +14,7 @@ object MailUtil {
   properties.put("mail.smtp.starttls.enable", "true")
   val session = Session.getInstance(properties, new Authenticator() {
     override protected def getPasswordAuthentication =
-      new PasswordAuthentication("rupal.gupta240897@gmail.com", "yjlx kmqz asah nzdp")
+      new PasswordAuthentication("rupal.gupta240897@gmail.com", "***********")
   })
 
   def composeMail(guest: GuestInfo): Email = {
@@ -77,11 +77,11 @@ object MailUtil {
                              |
                              |  <h2>Please check out our restaurant's menu for today:</h2>
                              |  <ul>
-                             |    <li>1. Pizza - 250</li>
-                             |    <li>2. Pasta - 300</li>
-                             |    <li>3. Sandwich - 350</li>
-                             |    <li>4. Tomato Soup - 200</li>
-                             |    <li>5. Mushroom Soup - 400</li>
+                             |    <li>1. Food item - Pizza, Price - 250</li>
+                             |    <li>2. Food item - Pasta, Price - 300</li>
+                             |    <li>3. Food item - Sandwich, Price - 350</li>
+                             |    <li>4. Food item - Tomato Soup, Price - 200</li>
+                             |    <li>5. Food item - Mushroom Soup, Price - 400</li>
                              |  </ul>
                              |
                              |  <p>Best Regards,</p>

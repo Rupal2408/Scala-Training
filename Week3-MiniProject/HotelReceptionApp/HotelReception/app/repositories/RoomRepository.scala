@@ -31,11 +31,6 @@ class RoomRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
       .result
   }
 
-  // Method to update room status by RoomID
-  def updateRoomStatusById(roomId: Int, status: String): Future[Int] = db.run {
-    rooms.filter(_.roomID === roomId).map(_.roomStatus).update(status)
-  }
-
   // Method to update room status by RoomNo
   def updateRoomStatusByRoomNo(roomNo: Int, status: String): Future[Int] = db.run {
     rooms.filter(_.roomNo === roomNo).map(_.roomStatus).update(status)
@@ -45,12 +40,4 @@ class RoomRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
     rooms.filter(_.roomNo === roomNo).map(_.roomID).result.headOption
   }
 
-  // Method to update the room status to OCCUPIED
-  def updateRoomStatus(roomNo: Int, status: String = "OCCUPIED"): Future[Int] = db.run {
-    rooms.filter(_.roomNo === roomNo).map(_.roomStatus).update(status)
-  }
-
-  def getRoomNoById(roomId: Int): Future[Option[Int]] = db.run {
-    rooms.filter(_.roomID === roomId).map(_.roomNo).result.headOption
-  }
 }

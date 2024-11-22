@@ -11,7 +11,7 @@ import scala.util.{Failure, Success, Try}
 @Singleton
 class KafkaProducerService @Inject()(config: Configuration)(implicit ec: ExecutionContext) extends Logging {
 
-  private val bootstrapServers = config.get[String]("kafka.bootstrap.servers")
+  private val bootstrapServers = sys.env.getOrElse("BROKER_HOST", config.get[String]("kafka.bootstrap.servers"))
   private val topic = config.get[String]("kafka.topic")
 
   // Kafka producer properties
@@ -25,7 +25,6 @@ class KafkaProducerService @Inject()(config: Configuration)(implicit ec: Executi
     props
   }
 
-  // Create Kafka producer
   private val producer = new KafkaProducer[String, String](producerProperties)
 
   /**
@@ -51,7 +50,6 @@ class KafkaProducerService @Inject()(config: Configuration)(implicit ec: Executi
     promise.future
   }
 
-  // Close the producer when application stops
   sys.addShutdownHook {
     producer.close()
   }

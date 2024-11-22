@@ -20,7 +20,7 @@ class WifiMailSender extends Actor {
 
     val session = Session.getInstance(properties, new Authenticator() {
       override protected def getPasswordAuthentication =
-        new PasswordAuthentication("rupal.gupta240897@gmail.com", "yjlx kmqz asah nzdp")
+        new PasswordAuthentication("rupal.gupta240897@gmail.com", "**********")
     })
     try {
       val message = new MimeMessage(session)

@@ -8,8 +8,6 @@ WORKDIR /app
 COPY . /app
 
 ENV BROKER_HOST = 34.172.161.212
-ENV SENDER_MAIL = "rupal.gupta240897@gmail.com"
-ENV SENDER_MAIL_PASSWORD = "yjlx kmqz asah nzdp"
 # Compile the Scala application
 RUN sbt compile
 

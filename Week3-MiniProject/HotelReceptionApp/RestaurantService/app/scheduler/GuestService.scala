@@ -3,10 +3,8 @@ package scheduler
 import models.{GuestDao}
 import utils.MailUtil.composeAndSendEmailAllGuests
 
-import java.util.concurrent.TimeUnit
 import javax.inject.{Inject, Singleton}
-import scala.concurrent.duration.Duration
-import scala.concurrent.{Await, ExecutionContext}
+import scala.concurrent.ExecutionContext
 
 @Singleton
 class GuestService @Inject()(guestRepository: GuestDao)(implicit ec: ExecutionContext) {

@@ -1,7 +1,5 @@
 package controllers
 
-import jobs.RoomStatusUpdateTask
-
 import javax.inject._
 import play.api.mvc._
 import repositories.{BookingDetailsRepository, GuestRepository, RoomRepository}
@@ -16,19 +14,12 @@ import java.time.LocalDate
 @Singleton
 class RoomController @Inject()(
                                 val controllerComponents: ControllerComponents,
-                                roomStatusUpdateTask: RoomStatusUpdateTask,
                                 roomRepository: RoomRepository,
                                 guestRepository: GuestRepository,
                                 bookingDetailsRepository: BookingDetailsRepository,
                                 kafkaProducerService: KafkaProducerService
                               )(implicit ec: ExecutionContext) extends BaseController with Logging {
 
-  // Trigger manual execution of the room status update task
-  def triggerRoomStatusUpdate: Action[AnyContent] = Action.async {
-    roomStatusUpdateTask.checkAndUpdateRoomAndGuestStatus().map { _ =>
-      Ok(Json.obj("message" -> "Cron job triggered manually"))
-    }
-  }
 
   // API to get available rooms by type
   def getAvailableRoomsByType(roomType: String): Action[AnyContent] = Action.async {

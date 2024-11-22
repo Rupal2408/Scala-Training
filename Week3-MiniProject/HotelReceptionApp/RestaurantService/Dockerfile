@@ -26,8 +26,6 @@ EXPOSE 9000
 ENV PLAY_HTTP_SECRET=thisisasecretfortheapplicationandwekeepittosecuretheapplicationletuscheckandithastowork
 
 ENV BROKER_HOST = 34.172.161.212
-ENV SENDER_MAIL = "rupal.gupta240897@gmail.com"
-ENV SENDER_MAIL_PASSWORD = "yjlx kmqz asah nzdp"
 
 # Run the binary script when the container launches
-CMD ["./bin/scala-play", "-Dplay.http.secret.key=$PLAY_HTTP_SECRET"]
+CMD ["./bin/restaurantservice", "-Dplay.http.secret.key=thisisasecretfortheapplicationandwekeepittosecuretheapplicationletuscheckandithastowork"]

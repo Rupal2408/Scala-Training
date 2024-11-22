@@ -25,24 +25,23 @@ class GuestRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implic
 
   private val guests = TableQuery[GuestTable]
 
-  // Method to add guests to the database
-  def addGuestsAndReturnIds(guestList: Seq[Guest]): Future[Seq[Long]] = {
-    val addGuestsAction = guestList.map(guest => (guests returning guests.map(_.guestId)) += guest)
-    db.run(DBIO.sequence(addGuestsAction).transactionally)
+
+  def getActiveGuests: Future[Seq[Guest]] = db.run {
+    guests.filter(_.guestStatus === "ACTIVE").result
   }
 
   def findGuestsByRoomNo(roomNo: Int): Future[Seq[Guest]] = db.run {
     guests.filter(_.roomNo === roomNo).result
   }
+
+  def addGuestsAndReturnIds(guestList: Seq[Guest]): Future[Seq[Long]] = {
+    val addGuestsAction = guestList.map(guest => (guests returning guests.map(_.guestId)) += guest)
+    db.run(DBIO.sequence(addGuestsAction).transactionally)
+  }
+
+
   def updateGuestStatus(guestId: Long, status: String): Future[Int] = db.run {
     guests.filter(_.guestId === guestId).map(_.guestStatus).update(status)
   }
 
-  def updateGuestsStatusByRoomNo(roomNo: Int, status: String): Future[Int] = db.run {
-    guests.filter(_.roomNo === roomNo).map(_.guestStatus).update(status)
-  }
-
-  def getActiveGuests: Future[Seq[Guest]] = db.run {
-    guests.filter(_.guestStatus === "ACTIVE").result
-  }
 }

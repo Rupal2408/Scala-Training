@@ -15,7 +15,7 @@ object Main {
     val body: String = s"Thank you for choosing to stay with us at Hotel Grand, RupalWork.\n\nWe look forward to making your" +
       s" stay a comfortable and memorable one! For your convenience, please find below some important contact details:" +
       s"\n\nEmergency Numbers: \n\nFront Desk: +91 XXXXXXXXXX\n\nRestaraunt Food Order: +91 XXXXXXXXXX\n\nFor any Emergency:" +
-      s" +91 XXXXXXXXXX"
+      s" +91 XXXXXXXXXX\n\nBest Regards,\nHotel Grand"
     Email(guestInfo.email, "Welcome Onboard!!!", body)
   }
 
