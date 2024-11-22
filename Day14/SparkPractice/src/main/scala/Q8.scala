@@ -1,3 +1,4 @@
+import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
 
 object Q8 {
@@ -22,9 +23,9 @@ object Q8 {
       "Joey,14"
     )
 
-    val rdd = spark.sparkContext.parallelize(data)
+    val rdd: RDD[String] = spark.sparkContext.parallelize(data)
 
-    val parsedRdd = rdd.map(row => convertToCSVRecords(row))
+    val parsedRdd: RDD[CSVRecords] = rdd.map(row => row)
 
     val filteredRdd = parsedRdd.filter(_.age >= 18)
 
