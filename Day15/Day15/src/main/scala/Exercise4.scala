@@ -22,7 +22,6 @@ import org.apache.spark.sql.SparkSession
 object Exercise4 {
   def main(args: Array[String]): Unit = {
 
-    // Initialize Spark session
     val spark = SparkSession.builder()
       .appName("DAG Analysis")
       .master("local[2]")
@@ -30,27 +29,31 @@ object Exercise4 {
 
     val sc = spark.sparkContext
 
-    // Create an RDD of integers from 1 to 10,000
     val rdd = sc.parallelize(1 to 10000)
 
-    // Apply transformations
-    val filteredRdd = rdd.filter(_ % 2 == 0)  // Filter even numbers
+    val filteredRdd = rdd.filter(_ % 2 == 0)
 
-    val mappedRdd1 = filteredRdd.map(_ * 10)  // Multiply each number by 10
+    val mappedRdd1 = filteredRdd.map(_ * 10)
 
-    val mappedRdd2 = mappedRdd1.map(num => (num % 100, num))  // Map to (key, value) where key is num % 100
+    val mappedRdd2 = mappedRdd1.map(num => (num % 100, num))
 
-    val reducedRdd = mappedRdd2.reduceByKey(_ + _)  // Reduce by key to sum the values for each key
+    val reducedRdd = mappedRdd2.reduceByKey(_ + _)
 
-    // Trigger an action to collect the result and display them
     val result = reducedRdd.collect()
 
     result.foreach(println)
 
-    // Hold the Spark UI
-    println("Application is running. Press Enter to exit.")
+    println("Press Enter to exit the application.")
     scala.io.StdIn.readLine()
-    // Stop the Spark session
     spark.stop()
   }
 }
+
+/*
+Output:
+(80,50030000)
+(0,50050000)
+(40,49990000)
+(20,49970000)
+(60,50010000)
+ */

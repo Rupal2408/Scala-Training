@@ -21,7 +21,6 @@ import scala.util.Random
 object Exercise1 {
   def main(args: Array[String]): Unit = {
 
-    // Create a SparkSession
     val spark = SparkSession.builder()
       .appName("RDD Partitioning Example")
       .master("local[2]")
@@ -29,30 +28,28 @@ object Exercise1 {
 
     val sc = spark.sparkContext
 
-    // Create an RDD with 1 million random numbers
     val rdd = sc.parallelize((1 to 1000000).map(_ => Random.nextInt(1000)))
 
-    // Print the initial number of partitions
     println(s"Initial number of partitions: ${rdd.getNumPartitions}")
 
-    // Repartition the RDD into 4 partitions
     val rddRepartitioned = rdd.repartition(4)
     println(s"Number of partitions after repartitioning: ${rddRepartitioned.getNumPartitions}")
 
-    // Coalesce the RDD back into 2 partitions
+    val repartitionedData = rddRepartitioned.glom().collect()
+    for ((partition, index) <- repartitionedData.zipWithIndex) {
+      println(s"Partition $index size after repartitioning: ${partition.length}")
+    }
+
     val rddCoalesced = rddRepartitioned.coalesce(2)
     println(s"Number of partitions after coalescing: ${rddCoalesced.getNumPartitions}")
 
-    // Print the first 5 elements from each partition
     rddCoalesced.mapPartitionsWithIndex((index, iterator) => {
       Iterator(s"Partition $index: ${iterator.take(5).mkString(", ")}")
     }).collect().foreach(println)
 
-    // Hold the Spark UI
-    println("Application is running. Press Enter to exit.")
+    println("Press Enter to exit the application.")
     scala.io.StdIn.readLine()
 
-    // Stop the Spark session
     spark.stop()
   }
 }
@@ -61,7 +58,11 @@ object Exercise1 {
 Output:
 Initial number of partitions: 2
 Number of partitions after repartitioning: 4
+Partition 0 size after repartitioning: 250000
+Partition 1 size after repartitioning: 250000
+Partition 2 size after repartitioning: 250000
+Partition 3 size after repartitioning: 250000
 Number of partitions after coalescing: 2
-Partition 0: 267, 833, 756, 953, 532
-Partition 1: 29, 647, 308, 405, 658
- */
+Partition 0: 233, 21, 505, 953, 567
+Partition 1: 617, 201, 876, 923, 549
+*/

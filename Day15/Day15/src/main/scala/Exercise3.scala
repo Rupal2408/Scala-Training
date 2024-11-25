@@ -20,7 +20,6 @@ import org.apache.spark.sql.SparkSession
 object Exercise3 {
   def main(args: Array[String]): Unit = {
 
-    // Initialize the Spark session with 2 executors
     val spark = SparkSession.builder()
       .appName("Word Count Analysis")
       .master("local[2]")  // Running Spark locally with 2 executors (local mode)
@@ -29,32 +28,24 @@ object Exercise3 {
 
     val sc = spark.sparkContext
 
-    // Generate a large RDD (1 million lines of repetitive text, similar to 'lorem ipsum')
     val loremIpsumText = """
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    """ * 25000 // Repeat the lorem ipsum text 25,000 times to create 1 million lines
+    """ * 25000
 
     val rdd = sc.parallelize(loremIpsumText.split("\n"))
 
-    // Transformation pipeline:
-    // 1. Split each line into words.
-    val wordsRdd = rdd.flatMap(line => line.split("\\W+"))  // Split by non-word characters
+    val wordsRdd = rdd.flatMap(line => line.split(" "))
 
-    // 2. Map each word to (word, 1).
     val wordPairsRdd = wordsRdd.map(word => (word.toLowerCase, 1))
 
-    // 3. Reduce by key to count word occurrences.
     val wordCountRdd = wordPairsRdd.reduceByKey(_ + _)
 
-    // Trigger an action to execute the job.
-    wordCountRdd.collect()  // Collect the result
-    // Hold the Spark UI
-    println("Application is running. Press Enter to exit.")
+    wordCountRdd.collect()
+    println("Press Enter to exit the application.")
     scala.io.StdIn.readLine()
-    // Stop the Spark session
     spark.stop()
   }
 }

@@ -18,7 +18,6 @@ import org.apache.spark.sql.SparkSession
 object Exercise2 {
   def main(args: Array[String]): Unit = {
 
-    // Initialize the Spark session
     val spark = SparkSession.builder()
       .appName("Narrow vs Wide Transformations")
       .master("local[2]")  // Local mode with 2 threads
@@ -26,28 +25,20 @@ object Exercise2 {
 
     val sc = spark.sparkContext
 
-    // Create an RDD with numbers from 1 to 1000
-    val rdd = sc.parallelize(1 to 1000)  // Split into 4 partitions
+    val rdd = sc.parallelize(1 to 1000)
 
-    // Narrow transformation: map
     val mappedRdd = rdd.map(x => x * 2)
 
-    // Narrow transformation: filter
     val filteredRdd = mappedRdd.filter(x => x % 2 == 0)
 
-    // Wide transformation: groupByKey
-    val keyValueRdd = rdd.map(x => (x % 10, x))  // Map numbers into key-value pairs (key = number % 10)
-    val groupedRdd = keyValueRdd.groupByKey()  // Group the numbers by the key (mod 10)
+    val keyValueRdd = rdd.map(x => (x % 10, x))
+    val groupedRdd = keyValueRdd.groupByKey()
 
-    // Save the narrow transformation result (filtered numbers) to a text file
     filteredRdd.saveAsTextFile("output/narrow_transformation")
 
-    // Save the wide transformation result (grouped by key) to a text file
     groupedRdd.saveAsTextFile("output/wide_transformation")
-    // Hold the Spark UI
-    println("Application is running. Press Enter to exit.")
+    println("Press Enter to exit the application.")
     scala.io.StdIn.readLine()
-    // Stop the Spark session
     spark.stop()
   }
 }
