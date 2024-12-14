@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="58659b0a-a401-42d6-8837-e6603713b4d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules/OptimizeDataProcessing.OptimizeDataProcessing-build.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/OptimizeDataProcessing.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/.bsp/sbt.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.day15-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.day15-build.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.iml" afterDir="false" />
@@ -43,6 +41,11 @@
       <change beforePath="$PROJECT_DIR$/../../../Day3/Task3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day3/Task3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Day5/studentOperation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day5/studentOperation.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Day7/Solution1To3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day7/Solution1To3.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/Configuration.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/Configuration.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/KafkaConsumer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/KafkaConsumer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/KafkaProducer.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/KafkaProducer.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/scala/SparkDataProcessor.scala" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/scala/SparkDataProcessor.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/BookingDetails.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/BookingDetails.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/Guest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/Guest.scala" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReceptionApp.key" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReceptionApp.key" afterDir="false" />

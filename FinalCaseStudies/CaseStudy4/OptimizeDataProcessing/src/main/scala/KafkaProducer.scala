@@ -10,8 +10,9 @@ object KafkaProducer {
 
   def main(args: Array[String]): Unit = {
     // Kafka Producer configuration
-    val kafkaBootstrapServers = "localhost:9092"
-    val kafkaTopic = "weekly_sales_topic"
+    val config = new Configuration()
+    val kafkaBootstrapServers = config.kafkaBootstrapServers
+    val kafkaTopic = config.kafkaTopic
 
     val props = new Properties()
     props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServers)
@@ -27,8 +28,8 @@ object KafkaProducer {
     while(true) {
       val store = stores(Random.nextInt(stores.length))
       val dept = departments(Random.nextInt(departments.length))
-      val weeklySales = Random.nextDouble() * 10000  // Simulate sales amount
-      val date = "2023-12-01" // Static date, can be dynamic for real scenario
+      val weeklySales = Random.nextDouble() * 10000
+      val date = "2023-12-01"
       val isHoliday = scala.util.Random.nextBoolean().toString.toUpperCase
 
       val salesData = SalesData(store, dept, weeklySales, date, isHoliday)

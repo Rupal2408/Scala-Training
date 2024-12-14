@@ -5,7 +5,7 @@ import org.apache.spark.storage.StorageLevel
 class SparkDataProcessor {
 
   def loadStaticData(spark: SparkSession, config: Configuration): (DataFrame, DataFrame) = {
-    // Load store metadata (features) and sales data from CSV files or GCS
+    // Load store metadata (features) and sales data from  GCS
     val featuresDf = spark.read.option("header", "true").csv(config.featuresDataPath)
     val storesDf = spark.read.option("header", "true").csv(config.storesDataPath)
 
@@ -128,13 +128,12 @@ object SparkDataProcessor {
     val trainDf = spark.read.option("header", "true").csv(config.trainDataPath)
     val cleanedSalesData = sparkDataProcessor.cleanSalesData(trainDf)
 
-    // Join the sales stream with features and stores metadata
     val enrichedSalesDf = cleanedSalesData
       .join(featuresDf, Seq("Store", "Date"))
       .join(storesDf, "Store")
       .repartition(col("Store"), col("Date")).persist(StorageLevel.MEMORY_AND_DISK)
 
-    // Perform aggregation (store-level total and average sales)
+    // Perform aggregation
     sparkDataProcessor.storeLevelMetrics(enrichedSalesDf, config)
     sparkDataProcessor.departmentLevelMetrics(enrichedSalesDf, config)
 

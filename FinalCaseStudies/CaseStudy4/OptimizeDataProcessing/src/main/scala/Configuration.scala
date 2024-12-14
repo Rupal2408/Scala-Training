@@ -9,5 +9,4 @@ class Configuration {
   val deptMetricsOutputPath:String = sys.env.getOrElse("DEPT_METRICS_OUTPUT_PATH","gs://gcs_bucket_rupal/department_metrics/")
   val deptIsHolidayOutputPath:String = sys.env.getOrElse("DEPT_ISHOLIDAY_OUTPUT_PATH","gs://gcs_bucket_rupal/department_is_holiday_metrics/")
   val enrichedDataOutputPath:String = sys.env.getOrElse("ENRICHED_DATA_OUTPUT_PATH","gs://gcs_bucket_rupal/enriched_data/")
-
 }

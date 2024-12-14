@@ -51,7 +51,6 @@ object KafkaConsumer {
     // Define the schema for the SalesData case class
     val salesSchema = Encoders.product[SalesData].schema
 
-    // Deserialize the JSON string into SalesData objects
     val salesDataDf = salesStream
       .select(from_json(col("value"), salesSchema).as("sales"))
       .select("sales.*")
@@ -62,7 +61,7 @@ object KafkaConsumer {
   def processStream(salesStream: DataFrame, featuresDF: DataFrame, storesDF :DataFrame, config:Configuration): Unit = {
     val query = salesStream.writeStream
       .foreachBatch { (batchDf: Dataset[Row], _: Long) =>
-        val persistedBatchDf = batchDf.persist(StorageLevel.MEMORY_AND_DISK) // persisted with replication
+        val persistedBatchDf = batchDf.persist(StorageLevel.MEMORY_AND_DISK)
 
         val enrichedSalesDf = persistedBatchDf.join(featuresDF, Seq("Store", "Date"))
           .join(storesDF, "Store")
@@ -72,7 +71,7 @@ object KafkaConsumer {
         departmentMetrics(enrichedSalesDf, config)
 
         enrichedSalesDf.write
-          .mode("append") // or "append" based on your use case
+          .mode("append")
           .format("parquet")  // Display output in the parquet
           .partitionBy("Store", "Date")
           .parquet(config.enrichedDataOutputPath)
@@ -98,7 +97,6 @@ object KafkaConsumer {
      storeSalesDf.write
        .mode("overwrite")
        .json(config.storeMetricsOutputPath)
-    println("written store sales")
     storeSalesDf.unpersist()
   }
 
