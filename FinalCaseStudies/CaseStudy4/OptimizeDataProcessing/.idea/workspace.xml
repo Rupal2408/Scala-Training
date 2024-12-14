@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="58659b0a-a401-42d6-8837-e6603713b4d4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/modules/OptimizeDataProcessing.OptimizeDataProcessing-build.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/OptimizeDataProcessing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/.bsp/sbt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.day15-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.day15-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/.idea/modules/day15.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day15/Day15/src/main/scala/Exercise3.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day15/Day15/src/main/scala/Exercise3.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/.bsp/sbt.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/.bsp/sbt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/.idea/modules/Day18and19.Day18and19-build.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/.idea/modules/Day18and19.Day18and19-build.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/.idea/modules/Day18and19.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/.idea/modules/Day18and19.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$33b58e0708d49049e53a$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$33b58e0708d49049e53a.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$33b58e0708d49049e53a.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$4914c0b27c9f57caf29e$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$4914c0b27c9f57caf29e.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$4914c0b27c9f57caf29e.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$738f18c975090e6caccc$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$738f18c975090e6caccc.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$738f18c975090e6caccc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$e12e1ff25964f0821d74$.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$e12e1ff25964f0821d74.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/config-classes/$e12e1ff25964f0821d74.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/_global/_global/compileOutputs/previous" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/compileIncremental/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/copyResources/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/compile/incOptions/_global/streams/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/dependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/exportedProducts/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/fullClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day18and19/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day18and19/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day3/Abstraction.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day3/Abstraction.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day3/BasicComponents.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day3/BasicComponents.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day3/Inheritance.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day3/Inheritance.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day3/Task3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day3/Task3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day5/studentOperation.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day5/studentOperation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Day7/Solution1To3.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Day7/Solution1To3.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/BookingDetails.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/BookingDetails.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/Guest.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReception/app/models/Guest.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReceptionApp.key" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Week3-MiniProject/HotelReceptionApp/HotelReceptionApp.key" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="OptimizeDataProcessing" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2q3qcSSoeyjdYVFeUu3ax8wosPG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.KafkaConsumer.executor": "Run",
+    "Application.KafkaProducer.executor": "Run",
+    "Application.SparkDataProcessor.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/RupalGupta/Scala-Training/FinalCaseStudies/CaseStudy4/OptimizeDataProcessing",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.KafkaConsumer">
+    <configuration name="KafkaConsumer" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="KafkaConsumer" />
+      <module name="OptimizeDataProcessing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KafkaProducer" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="KafkaProducer" />
+      <module name="OptimizeDataProcessing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SparkDataProcessor" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="SparkDataProcessor" />
+      <module name="OptimizeDataProcessing" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.KafkaConsumer" />
+        <item itemvalue="Application.KafkaProducer" />
+        <item itemvalue="Application.SparkDataProcessor" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="migrateConfigurationsNotificationShown" value="true" />
+    <option name="scala3DisclaimerShown" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="58659b0a-a401-42d6-8837-e6603713b4d4" name="Changes" comment="" />
+      <created>1733901687760</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733901687760</updated>
+    </task>
+    <servers />
+  </component>
+</project>

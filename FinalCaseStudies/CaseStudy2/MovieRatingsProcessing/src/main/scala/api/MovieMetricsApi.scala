@@ -1,0 +1,81 @@
+package api
+
+import akka.actor.ActorSystem
+import akka.http.scaladsl.Http
+import akka.http.scaladsl.model.{HttpEntity, HttpResponse, StatusCodes}
+import akka.http.scaladsl.server.Directives._
+import org.apache.spark.sql.SparkSession
+
+import scala.concurrent.ExecutionContextExecutor
+import scala.util.{Failure, Success}
+
+object MovieMetricsApi {
+  def main(args: Array[String]): Unit = {
+    implicit val system: ActorSystem = ActorSystem("MetricsApiServer")
+   // implicit val materializer: ActorMaterializer = ActorMaterializer()
+    implicit val executionContext: ExecutionContextExecutor = system.dispatcher
+
+    val spark = SparkSession.builder()
+      .appName("MetricsApiServer")
+      .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
+      .config("spark.hadoop.fs.AbstractFileSystem.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFS")
+      .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
+      .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "/Users/rupalgupta/gcp-final-key.json")
+      .master("local[*]")
+      .getOrCreate()
+
+    // Load aggregated data
+    val movieMetricsPath = "gs://gcs_bucket_rupal/case_study_2/aggregated_movie_metrics/"
+    val genreMetricsPath = "gs://gcs_bucket_rupal/case_study_2/aggregated_genre_metrics/"
+    val userDemoMetricsPath = "gs://gcs_bucket_rupal/case_study_2/aggregated_user_demographic_metrics/"
+
+    // API routes
+    val route =
+      pathPrefix("api") {
+        concat(
+          path("movie-metrics") {
+            get {
+              val movieMetricsDF = spark.read.parquet(movieMetricsPath)
+              val metrics = movieMetricsDF.limit(100).toJSON.collect()
+              complete(HttpResponse(
+                status = StatusCodes.OK,
+                entity = HttpEntity(metrics.mkString("[", ",", "]"))
+              ))
+            }
+          },
+          path("genre-metrics") {
+            get {
+              val genreMetricsDF = spark.read.parquet(genreMetricsPath)
+              val metrics = genreMetricsDF.limit(100).toJSON.collect()
+              complete(HttpResponse(
+                status = StatusCodes.OK,
+                entity = HttpEntity(metrics.mkString("[", ",", "]"))
+              ))
+            }
+          },
+          path("demographics-metrics") {
+            get {
+              val userDemoMetricsDF = spark.read.parquet(userDemoMetricsPath)
+              val metrics = userDemoMetricsDF.limit(100).toJSON.collect()
+              complete(HttpResponse(
+                status = StatusCodes.OK,
+                entity = HttpEntity(metrics.mkString("[", ",", "]"))
+              ))
+            }
+          }
+        )
+      }
+
+    // Start server
+    val bindingFuture = Http().newServerAt("localhost", 8080).bindFlow(route)
+    println("Server is online at http://localhost:8080/")
+
+    bindingFuture.onComplete {
+      case Success(binding) =>
+        println(s"Server is running at http://${binding.localAddress.getHostString}:${binding.localAddress.getPort}/")
+      case Failure(exception) =>
+        println(s"Failed to start server: ${exception.getMessage}")
+        system.terminate()
+    }
+  }
+}
