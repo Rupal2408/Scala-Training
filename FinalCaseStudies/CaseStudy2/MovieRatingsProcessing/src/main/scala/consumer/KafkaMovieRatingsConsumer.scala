@@ -49,7 +49,7 @@ object KafkaMovieRatingsConsumer {
 
       println("Enriched Data: ")
 
-      enrichedDF.limit(100)
+      enrichedDF
         .write
         .mode(SaveMode.Append)
         .partitionBy("date")

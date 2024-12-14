@@ -15,7 +15,7 @@ class UserDemoMetricsAggregator {
 
     println("Aggregated Genre Metrics: ")
     userDemographicsMetrics.show(10)
-    userDemographicsMetrics.limit(100)
+    userDemographicsMetrics
       .write
       .mode("overwrite")
       .parquet("gs://gcs_bucket_rupal/case_study_2/aggregated_user_demographic_metrics/")

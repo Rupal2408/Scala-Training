@@ -16,7 +16,7 @@ class GenreMetricsAggregator {
 
     println("Aggregated Genre Metrics: ")
     genreMetrics.show(10)
-    genreMetrics.limit(100)
+    genreMetrics
       .write
       .mode("overwrite")
       .parquet("gs://gcs_bucket_rupal/case_study_2/aggregated_genre_metrics/")

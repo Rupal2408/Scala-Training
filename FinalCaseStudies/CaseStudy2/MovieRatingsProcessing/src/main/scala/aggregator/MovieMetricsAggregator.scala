@@ -15,7 +15,7 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
 
     println("Aggregated Movie Metrics: ")
     movieMetrics.show(10)
-    movieMetrics.limit(100)
+    movieMetrics
       .write
       .mode("overwrite")
       .parquet("gs://gcs_bucket_rupal/case_study_2/aggregated_movie_metrics/")
