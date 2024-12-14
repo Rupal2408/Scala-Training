@@ -2,9 +2,14 @@ package api
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.Http
-import akka.http.scaladsl.model.{HttpEntity, HttpResponse, StatusCodes}
+import akka.http.scaladsl.model.StatusCodes.OK
+import akka.http.scaladsl.model.headers.{`Access-Control-Allow-Headers`, `Access-Control-Allow-Methods`, `Access-Control-Allow-Origin`}
+import akka.http.scaladsl.model.{ContentTypes, HttpEntity, HttpResponse, StatusCodes}
 import akka.http.scaladsl.server.Directives._
+import akka.stream.ActorMaterializer
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.desc
+import spray.json.{DefaultJsonProtocol, enrichAny}
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.{Failure, Success}
@@ -12,7 +17,6 @@ import scala.util.{Failure, Success}
 object MovieMetricsApi {
   def main(args: Array[String]): Unit = {
     implicit val system: ActorSystem = ActorSystem("MetricsApiServer")
-   // implicit val materializer: ActorMaterializer = ActorMaterializer()
     implicit val executionContext: ExecutionContextExecutor = system.dispatcher
 
     val spark = SparkSession.builder()
@@ -36,31 +40,49 @@ object MovieMetricsApi {
           path("movie-metrics") {
             get {
               val movieMetricsDF = spark.read.parquet(movieMetricsPath)
-              val metrics = movieMetricsDF.limit(100).toJSON.collect()
-              complete(HttpResponse(
-                status = StatusCodes.OK,
-                entity = HttpEntity(metrics.mkString("[", ",", "]"))
-              ))
+              val metrics = movieMetricsDF.sort(desc("average_rating")).limit(100).toJSON.collect()
+              respondWithHeaders(
+                `Access-Control-Allow-Origin`.*,
+                `Access-Control-Allow-Methods`(akka.http.scaladsl.model.HttpMethods.GET, akka.http.scaladsl.model.HttpMethods.POST),
+                `Access-Control-Allow-Headers`("Content-Type", "Authorization")
+              ) {
+                complete(HttpResponse(
+                  status = StatusCodes.OK,
+                  entity = HttpEntity(ContentTypes.`application/json`, metrics.mkString("[", ",", "]"))
+                ))
+              }
             }
           },
           path("genre-metrics") {
             get {
               val genreMetricsDF = spark.read.parquet(genreMetricsPath)
-              val metrics = genreMetricsDF.limit(100).toJSON.collect()
-              complete(HttpResponse(
-                status = StatusCodes.OK,
-                entity = HttpEntity(metrics.mkString("[", ",", "]"))
-              ))
+              val metrics = genreMetricsDF.sort(desc("average_rating")).limit(100).toJSON.collect()
+              respondWithHeaders(
+                `Access-Control-Allow-Origin`.*,
+                `Access-Control-Allow-Methods`(akka.http.scaladsl.model.HttpMethods.GET, akka.http.scaladsl.model.HttpMethods.POST),
+                `Access-Control-Allow-Headers`("Content-Type", "Authorization")
+              ) {
+                complete(HttpResponse(
+                  status = StatusCodes.OK,
+                  entity = HttpEntity(ContentTypes.`application/json`, metrics.mkString("[", ",", "]"))
+                ))
+              }
             }
           },
           path("demographics-metrics") {
             get {
               val userDemoMetricsDF = spark.read.parquet(userDemoMetricsPath)
-              val metrics = userDemoMetricsDF.limit(100).toJSON.collect()
-              complete(HttpResponse(
-                status = StatusCodes.OK,
-                entity = HttpEntity(metrics.mkString("[", ",", "]"))
-              ))
+              val metrics = userDemoMetricsDF.sort(desc("average_rating")).limit(100).toJSON.collect()
+              respondWithHeaders(
+                `Access-Control-Allow-Origin`.*,
+                `Access-Control-Allow-Methods`(akka.http.scaladsl.model.HttpMethods.GET, akka.http.scaladsl.model.HttpMethods.POST),
+                `Access-Control-Allow-Headers`("Content-Type", "Authorization")
+              ) {
+                complete(HttpResponse(
+                  status = StatusCodes.OK,
+                  entity = HttpEntity(ContentTypes.`application/json`, metrics.mkString("[", ",", "]"))
+                ))
+              }
             }
           }
         )
