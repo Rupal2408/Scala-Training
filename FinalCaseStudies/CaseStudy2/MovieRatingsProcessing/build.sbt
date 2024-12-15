@@ -36,3 +36,9 @@ libraryDependencies ++= Seq(
   "org.slf4j" % "slf4j-api" % "1.7.36",
   "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
 )
+
+libraryDependencies ++= Seq(
+  "org.scalatest" %% "scalatest" % "3.2.15" % Test,
+  "org.mockito" %% "mockito-scala" % "1.17.12" % Test,
+  "org.apache.kafka" % "kafka-clients" % "3.4.0"
+)
