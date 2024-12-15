@@ -5,6 +5,8 @@ import org.apache.spark.sql.functions.{col, from_unixtime, lit}
 
 import java.time.Instant
 import java.time.temporal.ChronoUnit
+import config.Configuration
+
 
 object RetentionPolicy {
   def main(args: Array[String]): Unit = {
@@ -16,7 +18,7 @@ object RetentionPolicy {
 
     spark.sparkContext.setLogLevel("ERROR")
 
-    val enrichedDataPath = "gs://gcs_bucket_rupal/case_study_2/enriched_ratings/"
+    val enrichedDataPath = Configuration.enrichedDataPath
     val parquetDataPath = s"$enrichedDataPath"
     val retentionDays = 14
 

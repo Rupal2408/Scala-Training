@@ -10,6 +10,7 @@ import akka.stream.ActorMaterializer
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.desc
 import spray.json.{DefaultJsonProtocol, enrichAny}
+import config.Configuration
 
 import scala.concurrent.ExecutionContextExecutor
 import scala.util.{Failure, Success}
@@ -24,14 +25,14 @@ object MovieMetricsApi {
       .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
       .config("spark.hadoop.fs.AbstractFileSystem.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFS")
       .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
-      .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "/Users/rupalgupta/gcp-final-key.json")
+      .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", Configuration.gcsJsonKeyfile)
       .master("local[*]")
       .getOrCreate()
 
     // Load aggregated data
-    val movieMetricsPath = "gs://gcs_bucket_rupal/case_study_2/aggregated_movie_metrics/"
-    val genreMetricsPath = "gs://gcs_bucket_rupal/case_study_2/aggregated_genre_metrics/"
-    val userDemoMetricsPath = "gs://gcs_bucket_rupal/case_study_2/aggregated_user_demographic_metrics/"
+    val movieMetricsPath = Configuration.aggregatedMovieMetricsPath
+    val genreMetricsPath = Configuration.aggregatedGenreMetricsPath
+    val userDemoMetricsPath = Configuration.aggregatedUserDemographicsMetricsPath
 
     // API routes
     val route =

@@ -7,16 +7,17 @@ import org.apache.spark.sql.streaming.Trigger
 import org.apache.spark.sql.types._
 
 import java.util.concurrent.TimeUnit
+import config.Configuration
 
 object KafkaMovieRatingsConsumer {
   def main(args: Array[String]): Unit = {
-    val KAFKA_BOOTSTRAP_SERVERS: String = "localhost:9092"
+    val KAFKA_BOOTSTRAP_SERVERS: String = Configuration.kafkaBootstrapServers
     val spark = SparkSession.builder()
       .appName("MovieRatingsConsumer")
       .config("spark.hadoop.fs.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFileSystem")
       .config("spark.hadoop.fs.AbstractFileSystem.gs.impl", "com.google.cloud.hadoop.fs.gcs.GoogleHadoopFS")
       .config("spark.hadoop.google.cloud.auth.service.account.enable", "true")
-      .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", "/Users/rupalgupta/gcp-final-key.json")
+      .config("spark.hadoop.google.cloud.auth.service.account.json.keyfile", Configuration.gcsJsonKeyfile)
       .master("local[*]")
       .getOrCreate()
 
@@ -26,10 +27,11 @@ object KafkaMovieRatingsConsumer {
       .add("rating", FloatType)
       .add("timestamp", StringType)
 
+
     val ratingsStream = spark.readStream
       .format("kafka")
       .option("kafka.bootstrap.servers", KAFKA_BOOTSTRAP_SERVERS)
-      .option("subscribe", "movie-ratings")
+      .option("subscribe", Configuration.kafkaTopic)
       .option("startingOffsets", "latest")
       .load()
       .selectExpr("CAST(value AS STRING) as jsonString")
@@ -37,8 +39,8 @@ object KafkaMovieRatingsConsumer {
       .select("rating.*")
 
     ratingsStream.writeStream.foreachBatch { (batchDF: Dataset[Row], batchId: Long) =>
-      val moviesDF = spark.read.option("header", "true").csv("gs://gcs_bucket_rupal/movies.csv")
-      val usersDF = spark.read.option("header", "true").csv("gs://gcs_bucket_rupal/user_data.csv")
+      val moviesDF = spark.read.option("header", "true").csv(Configuration.moviesDataPath)
+      val usersDF = spark.read.option("header", "true").csv(Configuration.usersDataPath)
 
       val filteredStream = batchDF.filter(col("rating").between(0.5, 5.0))
 
@@ -47,13 +49,11 @@ object KafkaMovieRatingsConsumer {
         .join(broadcast(usersDF), "userId")
         .withColumn("date", to_date(from_unixtime(col("timestamp") / 1000)))
 
-      println("Enriched Data: ")
-
       enrichedDF
         .write
         .mode(SaveMode.Append)
         .partitionBy("date")
-        .parquet("gs://gcs_bucket_rupal/case_study_2/enriched_ratings/")
+        .parquet(Configuration.enrichedDataPath)
 
       println("Saved Enriched Data Successfully.")
 

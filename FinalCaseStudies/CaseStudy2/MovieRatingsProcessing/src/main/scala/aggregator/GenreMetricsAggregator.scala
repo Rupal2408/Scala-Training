@@ -2,6 +2,8 @@ package aggregator
 
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SparkSession}
+import config.Configuration
+
 
 class GenreMetricsAggregator {
   def aggregate(enrichedDF: DataFrame): Unit = {
@@ -19,7 +21,7 @@ class GenreMetricsAggregator {
     genreMetrics
       .write
       .mode("overwrite")
-      .parquet("gs://gcs_bucket_rupal/case_study_2/aggregated_genre_metrics/")
+      .parquet(Configuration.aggregatedGenreMetricsPath)
 
     println("Successfully saved Aggregated Genre Metrics.")
   }

@@ -2,6 +2,7 @@ package aggregator
 
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.functions.{avg, col, count, explode, split}
+import config.Configuration
 
 class UserDemoMetricsAggregator {
   def aggregate(enrichedDF: DataFrame): Unit = {
@@ -18,7 +19,7 @@ class UserDemoMetricsAggregator {
     userDemographicsMetrics
       .write
       .mode("overwrite")
-      .parquet("gs://gcs_bucket_rupal/case_study_2/aggregated_user_demographic_metrics/")
+      .parquet(Configuration.aggregatedUserDemographicsMetricsPath)
 
     println("Successfully saved Aggregated User Demographic Metrics.")
   }

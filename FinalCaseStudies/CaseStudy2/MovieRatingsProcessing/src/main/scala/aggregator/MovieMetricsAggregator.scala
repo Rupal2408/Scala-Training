@@ -2,6 +2,8 @@ package aggregator
 
 import org.apache.spark.sql.functions._
 import org.apache.spark.sql.{DataFrame, SparkSession}
+import config.Configuration
+
 
  class MovieMetricsAggregator {
   def aggregate(enrichedDF: DataFrame): Unit = {
@@ -18,7 +20,7 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
     movieMetrics
       .write
       .mode("overwrite")
-      .parquet("gs://gcs_bucket_rupal/case_study_2/aggregated_movie_metrics/")
+      .parquet(Configuration.aggregatedMovieMetricsPath)
 
     println("Successfully saved Aggregated Movie Metrics.")
   }
